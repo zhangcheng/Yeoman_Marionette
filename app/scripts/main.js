@@ -1,13 +1,34 @@
 require.config({
-  shim: {
+  paths : {
+    underscore : 'vendor/underscore',
+    backbone   : 'vendor/backbone',
+    marionette : 'vendor/backbone.marionette',
+    jquery     : 'vendor/jquery.min',
+    tpl        : 'vendor/tpl'
   },
-
-  paths: {
-    jquery: 'vendor/jquery.min'
-  }
+  shim : {
+    'vendor/backbone-localStorage' : ['backbone'],
+    underscore : {
+      exports : '_'
+    },
+    backbone : {
+      exports : 'Backbone',
+      deps : ['jquery','underscore']
+    },
+    marionette : {
+      exports : 'Backbone.Marionette',
+      deps : ['backbone']
+    }
+  },
+  deps : ['jquery','underscore']
 });
- 
-require(['app'], function(app) {
-  // use app here
-  console.log(app);
+
+require(['app','backbone','routers/index','controllers/index'],function(app,Backbone,Router,Controller){
+  "use strict";
+
+  app.start();
+  new Router({
+    controller : Controller
+  });
+  Backbone.history.start();
 });
