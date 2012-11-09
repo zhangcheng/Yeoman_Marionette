@@ -1,4 +1,4 @@
-define(['backbone','models/Todo','lib/backbone-localStorage'],function(Backbone,Todo) {
+define(['backbone','models/Todo','vendor/backbone-localStorage'],function(Backbone,Todo) {
   'use strict';
 
   function isCompleted(todo) { return todo.get('completed'); }

@@ -1,5 +1,5 @@
 
-define(['backbone','lib/backbone-localStorage'],function(Backbone){
+define(['backbone','vendor/backbone-localStorage'],function(Backbone){
   'use strict';
 
   var Todo = Backbone.Model.extend({
